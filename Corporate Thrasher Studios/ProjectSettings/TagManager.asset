@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - BulletImpact
   - Explosion
+  - MainWeapon
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - PickUp
   - 
   - 
   - 

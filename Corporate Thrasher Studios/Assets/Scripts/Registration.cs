@@ -23,7 +23,7 @@ public class Registration : MonoBehaviour
         form.AddField("name", nameField.text);
         form.AddField("password", passwordField.text);
         
-        WWW www = new WWW("http://localhost/battle_to_earn/PlayerRegister.php", form);
+        WWW www = new WWW("http://localhost/battle_to_earn/register.php", form);
         yield return www;
         
         if(www.text == "0")
