@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f1e6b7242a78e443899a77f2c3f38ac
+guid: 62b6fa52359de8f478b9c3442068e99e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -53,6 +53,14 @@ ModelImporter:
     2100026: Plane007Mat
     2100028: Plane010Mat
     2100030: Plane011Mat
+    2100032: Material__1
+    2100034: Material__8
+    2100036: Material__4
+    2100038: Material__3
+    2100040: Material__7
+    2100042: Material__2
+    2100044: Material__6
+    2100046: Material__5
     2300000: Box001
     2300002: Box002
     2300004: Glass_001

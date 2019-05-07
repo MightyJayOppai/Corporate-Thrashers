@@ -20,10 +20,10 @@ public class Registration : MonoBehaviour
     IEnumerator Register()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", nameField.text);
+        form.AddField("username", nameField.text);
         form.AddField("password", passwordField.text);
         
-        WWW www = new WWW("http://localhost/battle_to_earn/register.php", form);
+        WWW www = new WWW("http://localhost/battle_to_earn/RegisterUser.php", form);
         yield return www;
         
         if(www.text == "0")

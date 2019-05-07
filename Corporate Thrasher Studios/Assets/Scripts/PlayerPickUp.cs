@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPickUp : MonoBehaviour
 {
     float pickUpRange = 2f;
     int pickUpLayerMask;
     Camera cam;
+    [SerializeField]
+    Image pickUpPopUp;
+    [SerializeField]
+    Text weaponName;   
     [SerializeField]
     GameObject mainWeapon;
     GameObject gameController;
@@ -21,6 +26,7 @@ public class PlayerPickUp : MonoBehaviour
         cam  = GetComponent<Camera>();
 
         pickUpLayerMask = LayerMask.GetMask("PickUp");
+        DisablePickUpPopUp();
     }
 
     void Update()
@@ -32,9 +38,12 @@ public class PlayerPickUp : MonoBehaviour
         //Every frame send a ray cast from the point of screen to the point of world
         if(Physics.Raycast(ray, out hit, pickUpRange, pickUpLayerMask))
         {
+            int id = hit.transform.GetComponent<WeaponID>().weaponID;
+            EnablePickUpPopUp();
+            weaponName.text = database.weapons[id].name;
             if(Input.GetKeyDown(KeyCode.E))
             {
-                int id = hit.transform.GetComponent<WeaponID>().weaponID;
+                
                 if(database.weapons[id].weaponType == 1)
                 {
                     //If the player is not holding any weapon, i.e., id = 0
@@ -59,5 +68,18 @@ public class PlayerPickUp : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            DisablePickUpPopUp();
+        }
+    }
+
+    void EnablePickUpPopUp()
+    {
+        pickUpPopUp.gameObject.SetActive(true);
+    }
+    void DisablePickUpPopUp()
+    {
+        pickUpPopUp.gameObject.SetActive(false);
     }
 }

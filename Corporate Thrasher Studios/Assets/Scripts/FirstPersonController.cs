@@ -9,22 +9,29 @@ public class FirstPersonController : MonoBehaviour
     public float playerWalkSpeed;
     public float playerRunSpeed;
     public float clampMax;
-    public float stamina;
+    public float curHealth;
+    public float maxHealth;
+    public float curStamina;
     public float maxStamina;
+    public GameObject healthBarUI;
     public GameObject staminaBarUI;
-	public Slider staminaSlider;
+	public Slider healthSlider;
+    public Slider staminaSlider;
 
     private Rigidbody myRB;
     private Vector3 movementInput;
     private float moveXAxis;
     private float moveYAxis;
 
+    bool isDead = false;
+
    
     void Start ()
     {  
         myRB = GetComponent<Rigidbody>();
         playerSpeed = playerWalkSpeed;
-        stamina = maxStamina;
+        curHealth = maxHealth;
+        curStamina = maxStamina;
         staminaSlider.value = CalculateStamina();
 
          //to lock the mouse to the game
@@ -47,14 +54,14 @@ public class FirstPersonController : MonoBehaviour
 
         staminaSlider.value = CalculateStamina();
 
-		if(stamina < maxStamina)
+		if(curStamina < maxStamina)
 		{
 			staminaBarUI.SetActive(true);
 		}
 
-		if(stamina > maxStamina)
+		if(curStamina > maxStamina)
 		{
-			stamina = maxStamina;
+			curStamina = maxStamina;
 		}
         
         /*if(movementInput != Vector3.zero)
@@ -64,15 +71,15 @@ public class FirstPersonController : MonoBehaviour
             myRB.AddForce(movementInput * playerSpeed, ForceMode.Impulse);
         }*/
 
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && curStamina > 0)
         {
-            stamina -= Time.deltaTime;
+            curStamina -= Time.deltaTime;
             playerSpeed = playerRunSpeed;
         }
-        else if (!Input.GetKey(KeyCode.LeftShift) && stamina < maxStamina || stamina == 0)
+        else if (!Input.GetKey(KeyCode.LeftShift) && curStamina < maxStamina || curStamina == 0)
         {
             playerSpeed = playerWalkSpeed;
-            stamina += Time.deltaTime;
+            curStamina += Time.deltaTime;
         }
 
         if(Input.GetKeyDown(KeyCode.Space) && myRB.velocity.y == 0)
@@ -84,6 +91,47 @@ public class FirstPersonController : MonoBehaviour
     }
     float CalculateStamina()
     {
-        return stamina/maxStamina;
+        return curStamina/maxStamina;
+    }
+    float CalculateHealth()
+	{
+		return curHealth/maxHealth;
+	}
+
+    public void CheckHealth()
+    {
+        if (curHealth >= maxHealth)
+        {
+            curHealth = maxHealth;
+        }
+
+        if (curHealth <= 0)
+        {
+            curHealth = 0;
+            isDead = true;
+        }
+    }
+
+    public void CheckStamina()
+    {
+        if (curStamina >= maxStamina)
+        {
+            curStamina = maxStamina;
+        }
+
+        if (curStamina <= 0)
+        {
+            curStamina = 0;
+
+        }
+    }
+    public void Die()
+    {
+        Debug.Log("You have Died!");
+    }
+
+    public void TakeDamage(float damage)
+    {
+        curHealth -= damage;
     }
 }

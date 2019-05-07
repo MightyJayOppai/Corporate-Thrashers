@@ -7,12 +7,12 @@ using UnityEngine;
 [System.Serializable]
 public class Weapon 
 {
-    public int itemID;
+    public int weaponID;
     public int weaponType;
     public GameObject weaponObject;
     public string name;
-    public float ammo;
     public float damage;
     public float range;
     public float rateOfFire;
+    public int maxAmmo;
 }
