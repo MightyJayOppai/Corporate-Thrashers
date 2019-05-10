@@ -17,15 +17,25 @@ public class Shooting : MonoBehaviour
     WeaponDatabase database;
     Camera mainCam;
     Animator weaponAnimator;
+    public Transform barrelLocation;
+    public GameObject impactEffect;
+    public ParticleSystem muzzleFlash;
+
 
     void Start()
     {
+        if(barrelLocation == null)
+        {
+            barrelLocation = transform;
+        }       
+
         gameController = GameObject.FindGameObjectWithTag("GameController");
         database = gameController.GetComponent<WeaponDatabase>();
-
         mainCam = Camera.main;
+
         id = GetComponent<WeaponID>().weaponID;
         weaponAnimator = GameObject.FindGameObjectWithTag("WeaponHolder").GetComponent<Animator>();
+
         curAmmo = database.weapons[id].maxAmmo;
         reloading = false;
     }
@@ -61,6 +71,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        muzzleFlash.Play();
         curAmmo--;
         
         RaycastHit hit;
@@ -74,6 +85,9 @@ public class Shooting : MonoBehaviour
                 FirstPersonController playerstats = hit.transform.GetComponent<FirstPersonController>();
                 playerstats.TakeDamage(database.weapons[id].damage);
                 Debug.Log(database.weapons[id].damage);
+                GameObject impactFX =  Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impactFX, 0.5f);
+
             }
         }
     }

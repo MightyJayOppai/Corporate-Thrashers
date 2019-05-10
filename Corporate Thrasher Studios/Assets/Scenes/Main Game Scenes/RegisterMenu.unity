@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -450,6 +450,10 @@ MonoBehaviour:
   nameField: {fileID: 82270336}
   passwordField: {fileID: 836292190}
   submitButton: {fileID: 849974209}
+  inputUser: {fileID: 0}
+  inputPassword: {fileID: 0}
+  username: {fileID: 0}
+  score: {fileID: 0}
 --- !u!1 &536360631
 GameObject:
   m_ObjectHideFlags: 0

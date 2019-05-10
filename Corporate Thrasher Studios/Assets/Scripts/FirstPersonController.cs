@@ -33,6 +33,7 @@ public class FirstPersonController : MonoBehaviour
         curHealth = maxHealth;
         curStamina = maxStamina;
         staminaSlider.value = CalculateStamina();
+        healthSlider.value = CalculateHealth();
 
          //to lock the mouse to the game
         Cursor.lockState = CursorLockMode.Locked;
@@ -53,6 +54,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         staminaSlider.value = CalculateStamina();
+        healthSlider.value = CalculateHealth();
 
 		if(curStamina < maxStamina)
 		{
@@ -62,6 +64,16 @@ public class FirstPersonController : MonoBehaviour
 		if(curStamina > maxStamina)
 		{
 			curStamina = maxStamina;
+		}
+
+        if(curHealth < maxHealth)
+		{
+			healthBarUI.SetActive(true);
+		}
+
+		if(curHealth > maxHealth)
+		{
+			curHealth = maxHealth;
 		}
         
         /*if(movementInput != Vector3.zero)
