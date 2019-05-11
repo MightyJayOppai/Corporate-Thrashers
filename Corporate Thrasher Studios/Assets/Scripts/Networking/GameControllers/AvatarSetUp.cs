@@ -8,6 +8,11 @@ public class AvatarSetUp : MonoBehaviour
     private PhotonView PV;
     public int characterValue;
     public GameObject myCharacter;
+    public int playerHealth;
+    public int playerDamage;
+
+    public Camera myCamera;
+    public AudioListener myAL;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -16,6 +21,11 @@ public class AvatarSetUp : MonoBehaviour
         {
             //Allow all players that have joined the game after the rpc function has been sent to still recieve it            
             PV.RPC("RPC_AddCharacter", RpcTarget.AllBuffered, PlayerInfo.PI.mySelectedCharacter);
+        }
+        else
+        {
+            Destroy(myCamera);
+            Destroy(myAL);
         } 
     }
 

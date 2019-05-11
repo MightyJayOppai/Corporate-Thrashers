@@ -92,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534766062165059088}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43f7a12cab3133a44aa1a9c32abf70cb, type: 3}
   m_Name: 
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534766062165059088}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3620db482f5c1d4ab1b657c2def27c5, type: 3}
   m_Name: 
@@ -130,9 +130,8 @@ GameObject:
   - component: {fileID: 6320756584524290236}
   - component: {fileID: 706349198680495587}
   - component: {fileID: 8922099276589875259}
-  - component: {fileID: 3305930990483642986}
   m_Layer: 0
-  m_Name: P3
+  m_Name: MP3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,30 +227,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3305930990483642986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929612478431078828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a199fd688963d45b546cf4920a3164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 0.25
-  playerWalkSpeed: 0.25
-  playerRunSpeed: 0.5
-  clampMax: 0.5
-  curHealth: 0
-  maxHealth: 100
-  curStamina: 0
-  maxStamina: 2
-  healthBarUI: {fileID: 0}
-  staminaBarUI: {fileID: 0}
-  healthSlider: {fileID: 0}
-  staminaSlider: {fileID: 0}
 --- !u!1 &4611582253648033105
 GameObject:
   m_ObjectHideFlags: 0

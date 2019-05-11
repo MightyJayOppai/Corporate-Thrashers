@@ -14,12 +14,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public int multiScene;
     //public bool isGameLoaded;
     
-    //Player Info
-    //Player[] photonPlayers;
-    //public int playersInRoom;
-    //public int myNumberInRoom;
-    //public int playersInGame;
-    
     private void Awake()
     {
         //Set up singleton
@@ -47,6 +41,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     public override void OnEnable()
     {
+        //Subscribe to the functions
         base.OnEnable();
         PhotonNetwork.AddCallbackTarget(this);
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
@@ -63,10 +58,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log("We are now in a room");
-        //photonPlayers = PhotonNetwork.PlayerList;
-        //playersInRoom = photonPlayers.Length;
-        //myNumberInRoom = playersInRoom;
-        //PhotonNetwork.NickName = myNumberInRoom.ToString();
+
         if(!PhotonNetwork.IsMasterClient)
         {
             return;
@@ -88,17 +80,22 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         currentScene = scene.buildIndex;
         if(currentScene == multiScene)
         {        
-            CreatePlayer();        
+            RPC_CreatePlayer();        
         }
     }
 
-    private void CreatePlayer()
+    private void RPC_CreatePlayer()
     {
         //Creates player network controller but not the player character
         //First parameter is the file path to the prefab, Path.Combine
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "P1"), transform.position, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position, Quaternion.identity, 0);
     }
     
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        Debug.Log(otherPlayer.NickName + " has left the game");
+    }
     void Update()
     {
         
