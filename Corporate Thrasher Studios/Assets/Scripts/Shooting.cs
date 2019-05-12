@@ -79,11 +79,11 @@ public class Shooting : MonoBehaviour
         if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, database.weapons[id].range))
         {
             timeToFire = Time.time + 1f/database.weapons[id].rateOfFire;
-            if(hit.transform.tag == "Player")
+            if(hit.transform.tag == "Enemy")
             {
                 Debug.Log(hit.transform.name);
-                FirstPersonController playerstats = hit.transform.GetComponent<FirstPersonController>();
-                playerstats.TakeDamage(database.weapons[id].damage);
+                EnemyStats enemystats = hit.transform.GetComponent<EnemyStats>();
+                enemystats.TakeDamage(database.weapons[id].damage);
                 Debug.Log(database.weapons[id].damage);
                 GameObject impactFX =  Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactFX, 0.5f);

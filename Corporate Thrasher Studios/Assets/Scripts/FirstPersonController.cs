@@ -99,7 +99,6 @@ public class FirstPersonController : MonoBehaviour
             myRB.AddForce(new Vector3(0,10,0), ForceMode.Impulse);
         }
 
-
     }
     float CalculateStamina()
     {

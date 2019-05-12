@@ -10,6 +10,7 @@ TagManager:
   - MainWeapon
   - WeaponHolder
   - Avatar
+  - Enemy
   layers:
   - Default
   - TransparentFX

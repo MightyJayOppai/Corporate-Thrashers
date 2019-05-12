@@ -15,6 +15,7 @@ public class AvatarCombat : MonoBehaviour
         PV = GetComponent<PhotonView>();
         avatarSetup = GetComponent<AvatarSetUp>();
         healthDisplay = GameSetUp.GS.health;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     
