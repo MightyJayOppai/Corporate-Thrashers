@@ -17,8 +17,8 @@ public class Registration : MonoBehaviour
     public ScoreObj score;
     
 
-    private string regUserURL = "http://localhost/battle_to_earn/RegisterUser.php";
-    private string loginUserURL = "http://localhost/battle_to_earn/LoginUser.php";
+    private string regUserURL = "https://battletoearn.000webhostapp.com/RegisterUser.php"; //"http://localhost/battle_to_earn/RegisterUser.php";
+    private string loginUserURL = "https://battletoearn.000webhostapp.com/LoginUser.php"; //"http://localhost/battle_to_earn/LoginUser.php";
     //Unity's inbuilt class to communicate and give information url's
 
     public void CallRegister()
@@ -66,8 +66,28 @@ public class Registration : MonoBehaviour
         
         WWW www = new WWW(loginUserURL, form);
         yield return www;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-        Debug.Log("Login Successful");
+        
+         Debug.Log(www.text);
+        if (www.text == "Login Success")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        }
+        else if (www.text == "User Not Found")
+        {
+            Debug.Log("User Does Not Exist");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            
+            yield return null;
+        }
+        else if (www.text == "Password is Wrong")
+        {
+            Debug.Log("Password is Incorrect");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            yield return null;
+        } 
+
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        //Debug.Log("Login Successful");
         //Debug.Log(www.text);
     }
 

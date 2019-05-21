@@ -32,7 +32,7 @@ public class GameSetUp : MonoBehaviour
             //Make the game wait until the player is disconnected from the master client
             yield return null;
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(3);
     }
     void Start()
     {

@@ -6,14 +6,19 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviour
 {
     private PhotonView PV;
-    private CharacterController myCC;
-    public float movementSpeed;
+    //private CharacterController myCC;
+    private Rigidbody multiRB;
+    public float playerSpeed;
     public float rotation;
+    private Vector3 movementInput;
+    private float moveXAxis;
+    private float moveYAxis;
     
     void Start()
     {
+        multiRB = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
-        myCC = GetComponent<CharacterController>();
+        //myCC = GetComponent<CharacterController>();
     }
 
     
@@ -27,24 +32,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void BasicMovement()
     {
-        if(Input.GetKey(KeyCode.W))
-        {
-            myCC.Move(transform.forward * Time.deltaTime * movementSpeed);
-        }
+        moveXAxis = Input.GetAxis("Horizontal");
+        moveYAxis = Input.GetAxis("Vertical");
 
-        if(Input.GetKey(KeyCode.S))
+        movementInput = (moveXAxis * transform.right + moveYAxis * transform.forward).normalized;
+        //movementInput = new Vector3(moveXAxis, 0.0f, MoveYAxis);   
+        if(movementInput != Vector3.zero)
         {
-            myCC.Move(-transform.forward * Time.deltaTime * movementSpeed);
-        }
-
-        if(Input.GetKey(KeyCode.D))
-        {
-            myCC.Move(transform.right * Time.deltaTime * movementSpeed);
-        }
-
-        if(Input.GetKey(KeyCode.A))
-        {
-            myCC.Move(-transform.right * Time.deltaTime * movementSpeed);
+            multiRB.AddForce(movementInput * playerSpeed, ForceMode.Impulse);
+            //myRB.MovePosition(transform.position + transform.forward * playerSpeed);
         }
     }
     void BasicRotation()

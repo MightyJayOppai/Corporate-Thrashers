@@ -174,10 +174,10 @@ GameObject:
   - component: {fileID: 6471310321982120853}
   - component: {fileID: 6471310321982120842}
   - component: {fileID: 6471310321982120843}
-  - component: {fileID: 6471310321982120854}
+  - component: {fileID: 2117522690}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,9 +270,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &6471310321982120854
+--- !u!114 &2117522690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,21 +281,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6471310321982120841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a199fd688963d45b546cf4920a3164, type: 3}
+  m_Script: {fileID: 11500000, guid: 252e7b175d1d0084a96725a9adfb9e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  playerWalkSpeed: 0
-  playerRunSpeed: 0
-  clampMax: 0
+  damage: 10
+  lastAttackTime: 0
+  enemyAttackCooldown: 1
   curHealth: 0
   maxHealth: 100
-  curStamina: 0
-  maxStamina: 100
+  maxSpeed: 5
+  maxForce: 5
+  stoppingDis: 1
   healthBarUI: {fileID: 6471310323823047148}
-  staminaBarUI: {fileID: 6471310323823047148}
   healthSlider: {fileID: 6471310321873785645}
-  staminaSlider: {fileID: 0}
 --- !u!1 &6471310322709042239
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +417,7 @@ GameObject:
   - component: {fileID: 6471310323823047145}
   - component: {fileID: 6471310323823047150}
   m_Layer: 0
-  m_Name: OtherPlayerBar
+  m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

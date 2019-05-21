@@ -321,10 +321,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a199fd688963d45b546cf4920a3164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.25
-  playerWalkSpeed: 0.25
-  playerRunSpeed: 0.5
-  clampMax: 0.5
+  playerSpeed: 10
+  playerWalkSpeed: 10
+  playerRunSpeed: 15
+  clampMax: 15
   curHealth: 0
   maxHealth: 100
   curStamina: 0
@@ -333,3 +333,4 @@ MonoBehaviour:
   staminaBarUI: {fileID: 0}
   healthSlider: {fileID: 0}
   staminaSlider: {fileID: 0}
+  mobileJoy: {fileID: 0}

@@ -26,4 +26,12 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+    public void MultiplayerMenu()
+    {
+        SceneManager.LoadScene(3);
+    }
+    public void GoBackMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

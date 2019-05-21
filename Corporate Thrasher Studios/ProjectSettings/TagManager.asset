@@ -11,6 +11,8 @@ TagManager:
   - WeaponHolder
   - Avatar
   - Enemy
+  - MoveJoystick
+  - CameraJoystick
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ public class AvatarCombat : MonoBehaviour
         PV = GetComponent<PhotonView>();
         avatarSetup = GetComponent<AvatarSetUp>();
         healthDisplay = GameSetUp.GS.health;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     
@@ -25,7 +25,7 @@ public class AvatarCombat : MonoBehaviour
         {
             return;
         }
-        if(Input.GetMouseButton(0))
+        if(Input.GetButton("Fire1"))
         {
             PV.RPC("RPC_Shooting", RpcTarget.All);
         }

@@ -59,20 +59,20 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distort: 1
+    - _Distort: 100
     - _DstBlend: 0
-    - _Fresnel: 3
-    - _FresnelWidth: 3
+    - _Fresnel: 5
+    - _FresnelWidth: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _IntersectionThreshold: 0.1
+    - _IntersectionThreshold: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ScrollSpeedU: 2
-    - _ScrollSpeedV: 0
+    - _ScrollSpeedV: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -81,4 +81,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.9433962, g: 0.92472947, b: 0.09344962, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.9811321, g: 0.53208303, b: 0.24528302, a: 1}
+    - _MainColor: {r: 0.19566149, g: 0.9150943, b: 0.06474723, a: 1}
